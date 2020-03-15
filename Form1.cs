@@ -16,5 +16,12 @@ namespace RimOptiList
         {
             InitializeComponent();
         }
+
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            Excel ex = new Excel(@"Szablon", 1);
+            ex.
+        }
     }
 }

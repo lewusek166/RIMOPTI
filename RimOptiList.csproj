@@ -55,6 +55,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="szablon.cs" />
     <Compile Include="WListyPolonczen.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -112,6 +113,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\Database\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\Szablon.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -34,7 +34,26 @@ namespace RimOptiList
                 return "";
             }
         }
-
+        public string[,] ReadRange(int starti, int starty, int endi, int endy)
+        {
+            Range range = (Range)ws.Range[ws.Cells[starti, starty], ws.Cells[endi, endy]];
+            object[,] holder = range.Value2;
+            string[,] returnstring = new string[endi - starti, endy - starty];
+            for (int p = 1; p <= endi - starti; p++)
+            {
+                for (int q = 1; q <= endy - starty; q++)
+                {
+                    returnstring[p - 1, q - 1] = holder[p, q].ToString();
+                }
+                
+            }
+            return returnstring;
+        }
+        public void WriteRange(int starti, int starty, int endi, int endy,string[,] writestring)
+        {
+            Range range = (Range)ws.Range[ws.Cells[starti, starty], ws.Cells[endi, endy]];
+            range.Value2 = writestring;
+        }
         public void WriteToCell(int i, int j, string s)
         {
             i++;
