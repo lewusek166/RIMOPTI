@@ -20,8 +20,8 @@ namespace RimOptiList
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            Excel ex = new Excel(@"Szablon", 1);
-            ex.
+            Excel ex = new Excel();
+            ex.CreateNewFileWithTemplate("@C:/Users/Przemysław/source/repos/RimOptiList/RIMOPTI/Data")
         }
     }
 }

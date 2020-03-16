@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,7 @@ namespace RimOptiList
     {
         string path = "";
         _Application excel = new _Excel.Application();
-        Workbook wb;
+        Workbook wb,wbSource,wbTarget;
         Worksheet ws;
         public Excel(string path, int Sheet)
         {
@@ -20,7 +21,10 @@ namespace RimOptiList
             wb = excel.Workbooks.Open(path);
             ws = excel.Worksheets[Sheet];
         }
+        public Excel()
+        {
 
+        }
         public string ReadCell(int i,int j)
         {
             i++;
@@ -54,12 +58,35 @@ namespace RimOptiList
             Range range = (Range)ws.Range[ws.Cells[starti, starty], ws.Cells[endi, endy]];
             range.Value2 = writestring;
         }
-        public void WriteToCell(int i, int j, string s)
+        public void WriteToCell(int i, int j, string sc)
         {
             i++;
             j++;
-            ws.Cells[i, j].Value2 = s;
+            ws.Cells[i, j].Value2 = sc;
         }
+        public void CreateNewFileWithTemplate(string fileName,string path, string sorceFilename)
+        {
+            string sourceFileName = sorceFilename;
+            string tempFileName = path;
+            string folderPath = @"Data\";
+            string sourceFilePath = System.IO.Path.Combine(folderPath, sourceFileName);
+            string destinationFilePath = System.IO.Path.Combine(folderPath, tempFileName);
+
+            File.Copy(sourceFilePath, destinationFilePath, true);
+            wbSource = excel.Workbooks.Open(sourceFilePath);
+            wbTarget = excel.Workbooks.Open(destinationFilePath);
+            ws = wbSource.Worksheets["Sheet1"]; 
+            ws.Name = "TempSheet"; 
+
+            ws.Copy(wbTarget.Worksheets[1]); //Actual copy
+            wbSource.Close(false);
+            wbTarget.Close(true);
+            excel.Quit();
+
+            System.IO.File.Delete(sourceFilePath);
+            System.IO.File.Move(destinationFilePath, sourceFilePath);
+        }
+    }
         public void SaveData()
         {
             wb.Save();
