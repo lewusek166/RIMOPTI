@@ -13,7 +13,7 @@ namespace RimOptiList
     {
         string path = "";
         _Application excel = new _Excel.Application();
-        Workbook wb,wbSource,wbTarget;
+        Workbook wb;
         Worksheet ws;
         public Excel(string path, int Sheet)
         {
@@ -64,29 +64,7 @@ namespace RimOptiList
             j++;
             ws.Cells[i, j].Value2 = sc;
         }
-        public void CreateNewFileWithTemplate(string fileName,string path, string sorceFilename)
-        {
-            string sourceFileName = sorceFilename;
-            string tempFileName = path;
-            string folderPath = @"Data\";
-            string sourceFilePath = System.IO.Path.Combine(folderPath, sourceFileName);
-            string destinationFilePath = System.IO.Path.Combine(folderPath, tempFileName);
-
-            File.Copy(sourceFilePath, destinationFilePath, true);
-            wbSource = excel.Workbooks.Open(sourceFilePath);
-            wbTarget = excel.Workbooks.Open(destinationFilePath);
-            ws = wbSource.Worksheets["Sheet1"]; 
-            ws.Name = "TempSheet"; 
-
-            ws.Copy(wbTarget.Worksheets[1]); //Actual copy
-            wbSource.Close(false);
-            wbTarget.Close(true);
-            excel.Quit();
-
-            System.IO.File.Delete(sourceFilePath);
-            System.IO.File.Move(destinationFilePath, sourceFilePath);
-        }
-    }
+ 
         public void SaveData()
         {
             wb.Save();
@@ -94,6 +72,7 @@ namespace RimOptiList
         public void SaveAsData(string path)
         {
             wb.SaveAs(path);
+            wb.Close();
         }
         public void Close()
         {
