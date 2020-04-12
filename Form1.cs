@@ -50,7 +50,7 @@ namespace RimOptiList
         {
             
                 SQLittleDataBase sql = new SQLittleDataBase();
-            sql.ExecuteQuery("SELECT * FROM Firmy");
+            sql.LoadData();
             
         }
     }

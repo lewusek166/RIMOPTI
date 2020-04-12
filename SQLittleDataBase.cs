@@ -25,7 +25,7 @@ namespace RimOptiList
         public void SetConnection()
         {
             sql_con = new SQLiteConnection
-                ("Data Source=\\Data\\testDB.db;Version=3;New=False;Compress=True;");
+                (@"Data Source=C:\Users\Przemysław\source\repos\RimOptiList\RIMOPTI\Data\testDB.db;Version=3;New=False;Compress=True;");
         }
 
         public void ExecuteQuery(string txtQuery)
@@ -42,11 +42,12 @@ namespace RimOptiList
             SetConnection();
             sql_con.Open();
             sql_cmd = sql_con.CreateCommand();
-            string CommandText = "select id, desc from mains";
+            string CommandText = "SELECT * FROM Firmy";
             DB = new SQLiteDataAdapter(CommandText, sql_con);
             DS.Reset();
             DB.Fill(DS);
             DT = DS.Tables[0];
+            
             //Grid.DataSource = DT;
             sql_con.Close();
         }
