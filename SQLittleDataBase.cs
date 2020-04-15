@@ -15,6 +15,8 @@ namespace RimOptiList
         public SQLiteDataAdapter DB;
         public DataSet DS = new DataSet();
         public DataTable DT = new DataTable();
+       
+
 
        public SQLittleDataBase()
         {
@@ -47,6 +49,7 @@ namespace RimOptiList
             DS.Reset();
             DB.Fill(DS);
             DT = DS.Tables[0];
+            string ser = DT.Rows.Find("ATLAS COPCO").ToString();
             
             //Grid.DataSource = DT;
             sql_con.Close();
