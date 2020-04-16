@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace RimOptiList
 {
-    public partial class Form1 : Form
+    public partial class OknoG : Form
     {
-        public Form1()
+        public OknoG()
         {
             InitializeComponent();
         }
@@ -52,6 +52,13 @@ namespace RimOptiList
                 SQLittleDataBase sql = new SQLittleDataBase();
             sql.LoadData();
             
+        }
+
+        private void DodajUsuńModyfikujToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            DUM pokaz = new DUM();
+            pokaz.Show();
         }
     }
 }

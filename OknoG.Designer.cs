@@ -1,6 +1,6 @@
 ﻿namespace RimOptiList
 {
-    partial class Form1
+    partial class OknoG
     {
         /// <summary>
         /// Wymagana zmienna projektanta.
@@ -31,9 +31,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.bazaDanychToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajUsuńModyfikujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.kontaktToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.przewódToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sealToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wyszukajToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testPołączeniaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ustawieniaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,7 +61,7 @@
             this.ustawieniaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(213, 1101);
+            this.menuStrip1.Size = new System.Drawing.Size(306, 1101);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -75,36 +72,15 @@
             this.wyszukajToolStripMenuItem,
             this.testPołączeniaToolStripMenuItem});
             this.bazaDanychToolStripMenuItem.Name = "bazaDanychToolStripMenuItem";
-            this.bazaDanychToolStripMenuItem.Size = new System.Drawing.Size(200, 45);
+            this.bazaDanychToolStripMenuItem.Size = new System.Drawing.Size(293, 45);
             this.bazaDanychToolStripMenuItem.Text = "Baza danych";
             // 
             // dodajUsuńModyfikujToolStripMenuItem
             // 
-            this.dodajUsuńModyfikujToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.kontaktToolStripMenuItem,
-            this.przewódToolStripMenuItem,
-            this.sealToolStripMenuItem});
             this.dodajUsuńModyfikujToolStripMenuItem.Name = "dodajUsuńModyfikujToolStripMenuItem";
             this.dodajUsuńModyfikujToolStripMenuItem.Size = new System.Drawing.Size(512, 54);
             this.dodajUsuńModyfikujToolStripMenuItem.Text = "dodaj / usuń / modyfikuj";
-            // 
-            // kontaktToolStripMenuItem
-            // 
-            this.kontaktToolStripMenuItem.Name = "kontaktToolStripMenuItem";
-            this.kontaktToolStripMenuItem.Size = new System.Drawing.Size(300, 54);
-            this.kontaktToolStripMenuItem.Text = "kontakt";
-            // 
-            // przewódToolStripMenuItem
-            // 
-            this.przewódToolStripMenuItem.Name = "przewódToolStripMenuItem";
-            this.przewódToolStripMenuItem.Size = new System.Drawing.Size(300, 54);
-            this.przewódToolStripMenuItem.Text = "przewód";
-            // 
-            // sealToolStripMenuItem
-            // 
-            this.sealToolStripMenuItem.Name = "sealToolStripMenuItem";
-            this.sealToolStripMenuItem.Size = new System.Drawing.Size(300, 54);
-            this.sealToolStripMenuItem.Text = "seal";
+            this.dodajUsuńModyfikujToolStripMenuItem.Click += new System.EventHandler(this.DodajUsuńModyfikujToolStripMenuItem_Click);
             // 
             // wyszukajToolStripMenuItem
             // 
@@ -122,7 +98,7 @@
             // ustawieniaToolStripMenuItem
             // 
             this.ustawieniaToolStripMenuItem.Name = "ustawieniaToolStripMenuItem";
-            this.ustawieniaToolStripMenuItem.Size = new System.Drawing.Size(200, 45);
+            this.ustawieniaToolStripMenuItem.Size = new System.Drawing.Size(293, 45);
             this.ustawieniaToolStripMenuItem.Text = "Ustawienia";
             // 
             // openFileDialog1
@@ -263,7 +239,7 @@
             this.label5.Text = "label5";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Form1
+            // OknoG
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -271,7 +247,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
+            this.Name = "OknoG";
             this.Text = "RimOptiList";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -290,9 +266,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem bazaDanychToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dodajUsuńModyfikujToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem kontaktToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem przewódToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem sealToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem wyszukajToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ustawieniaToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
