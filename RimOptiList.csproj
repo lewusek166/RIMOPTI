@@ -90,6 +90,9 @@
     <EmbeddedResource Include="DUM.resx">
       <DependentUpon>DUM.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Logowanie.resx">
+      <DependentUpon>Logowanie.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="OknoG.resx">
       <DependentUpon>OknoG.cs</DependentUpon>
     </EmbeddedResource>

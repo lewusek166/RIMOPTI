@@ -17,7 +17,7 @@ namespace RimOptiList
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new OknoG());
+            Application.Run(new Logowanie());
         }
     }
 }
