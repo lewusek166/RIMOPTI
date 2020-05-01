@@ -44,14 +44,45 @@ namespace RimOptiList
                 int Range =ex.RangeData();
                 Excel szablon = new Excel(@"C:\Users\Przemysław\source\repos\RimOptiList\RIMOPTI\Data\Szablon.xml", 1);
                 szablon.SaveAsData(@"C:\Users\Przemysław\source\repos\RimOptiList\RIMOPTI\Data\" + ex.NmHernes+".xml");
-                Excel start = new Excel(@"C:\Users\Przemysław\source\repos\RimOptiList\RIMOPTI\Data\" + ex.NmHernes + ".xml",1);
-                string[,] data =ex.ReadRange(6, 1, Range, 1);
+                Excel lista = new Excel(@"C:\Users\Przemysław\source\repos\RimOptiList\RIMOPTI\Data\" + ex.NmHernes + ".xml",1);
+                string[,] data =ex.ReadRange(6, 1, Range, 16);
                 
-                
-                ex.Close();
-                start.Close();
+                for (int i = 0; i < Range-5; i++)
+                {
+                    if (data[i, 0].Length == 1)
+                    {
+                       data[i, 0] = "00" + data[i, 0];
+                        
+                        continue;
+                    }
+                    if (data[i, 0].Length == 2)
+                    {
+                        data[i, 0] = "0" + data[i, 0];
+                        
+                        continue;
+                    }
+                    
+                }//dodanie 0 do lp
+                progressBar1.Value += 30;
+                ///////////////////////////////////////////wklejanie
+                for(int i = 4; i < Range - 1; i++)
+                {
+                    lista.ws.Cells[i, 1].Value2 = ex.NmHernes + "__" + data[i-4, 0];
+                }///kolumna A
+                for (int i = 4; i < Range - 1; i++)
+                {
+                    lista.ws.Cells[i,5].Value2= "Pos. " + data[i-4, 0];
+                    lista.ws.Cells[i, 6].Value2 = ex.NmHernes + "_";
+                    lista.ws.Cells[i, 8].Value2 = data[i, 2];
+                    lista.ws.Cells[]
 
-                progressBar1.Value += 5;
+
+                }///dodani
+                lista.SaveData();
+                ex.Close();
+                lista.Close();
+
+                
             }
 
             

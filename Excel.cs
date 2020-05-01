@@ -15,8 +15,8 @@ namespace RimOptiList
         public string Customers, NmHernes;
         string path = "";
         _Application excel = new _Excel.Application();
-        Workbook wb;
-        Worksheet ws;
+        public Workbook wb;
+        public Worksheet ws;
         public Excel(string path, int Sheet)
         {
             this.path = path;
@@ -59,12 +59,16 @@ namespace RimOptiList
         {
             Range range = (Range)ws.Range[ws.Cells[starti, starty], ws.Cells[endi, endy]];
             object[,] holder = range.Value2;
-            string [,] returnstring = new string[endi - starti, endy - starty];
-            for (int p = 1; p <= endi - starti; p++)
+            string [,] returnstring = new string[endi - starti+1, endy - starty+1];
+            for (int p = 1; p <= endi - starti+1; p++)
             {
-                for (int q = 1; q <= endy - starty; q++)
+                for (int q = 1; q <= endy - starty + 1; q++)
                 {
-                    returnstring[p - 1, q - 1] = holder[p, q].ToString();
+                    if(holder[p, q] == null)
+                    {
+                        holder[p, q] = "---";
+                    }
+                    returnstring[p-1, q-1] = holder[p, q].ToString();
                 }
                 
             }
