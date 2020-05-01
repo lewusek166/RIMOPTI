@@ -61,7 +61,7 @@
             this.ustawieniaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(306, 1101);
+            this.menuStrip1.Size = new System.Drawing.Size(213, 1912);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -72,7 +72,7 @@
             this.wyszukajToolStripMenuItem,
             this.testPołączeniaToolStripMenuItem});
             this.bazaDanychToolStripMenuItem.Name = "bazaDanychToolStripMenuItem";
-            this.bazaDanychToolStripMenuItem.Size = new System.Drawing.Size(293, 45);
+            this.bazaDanychToolStripMenuItem.Size = new System.Drawing.Size(200, 45);
             this.bazaDanychToolStripMenuItem.Text = "Baza danych";
             // 
             // dodajUsuńModyfikujToolStripMenuItem
@@ -98,7 +98,7 @@
             // ustawieniaToolStripMenuItem
             // 
             this.ustawieniaToolStripMenuItem.Name = "ustawieniaToolStripMenuItem";
-            this.ustawieniaToolStripMenuItem.Size = new System.Drawing.Size(293, 45);
+            this.ustawieniaToolStripMenuItem.Size = new System.Drawing.Size(200, 45);
             this.ustawieniaToolStripMenuItem.Text = "Ustawienia";
             // 
             // openFileDialog1
@@ -111,7 +111,7 @@
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button1.Location = new System.Drawing.Point(3, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(652, 174);
+            this.button1.Size = new System.Drawing.Size(652, 309);
             this.button1.TabIndex = 1;
             this.button1.Text = "Dodaj listę połączeń";
             this.button1.UseVisualStyleBackColor = true;
@@ -133,7 +133,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.991826F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 57.76567F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(2004, 1101);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(2004, 1912);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // tableLayoutPanel2
@@ -148,7 +148,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(658, 360);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(658, 630);
             this.tableLayoutPanel2.TabIndex = 3;
             // 
             // label1
@@ -156,9 +156,9 @@
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(3, 180);
+            this.label1.Location = new System.Drawing.Point(3, 315);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(652, 180);
+            this.label1.Size = new System.Drawing.Size(652, 315);
             this.label1.TabIndex = 2;
             this.label1.Text = "Postęp";
             this.label1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -166,9 +166,9 @@
             // progressBar1
             // 
             this.progressBar1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.progressBar1.Location = new System.Drawing.Point(359, 369);
+            this.progressBar1.Location = new System.Drawing.Point(359, 639);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(658, 92);
+            this.progressBar1.Size = new System.Drawing.Size(658, 165);
             this.progressBar1.TabIndex = 4;
             // 
             // tableLayoutPanel3
@@ -188,7 +188,7 @@
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(978, 360);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(978, 630);
             this.tableLayoutPanel3.TabIndex = 5;
             // 
             // label2
@@ -198,7 +198,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label2.Location = new System.Drawing.Point(6, 3);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(469, 175);
+            this.label2.Size = new System.Drawing.Size(469, 310);
             this.label2.TabIndex = 0;
             this.label2.Text = "Liczba wykonanych programów";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -210,7 +210,7 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label3.Location = new System.Drawing.Point(484, 3);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(488, 175);
+            this.label3.Size = new System.Drawing.Size(488, 310);
             this.label3.TabIndex = 1;
             this.label3.Text = "label3";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -220,9 +220,9 @@
             this.label4.AutoSize = true;
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.Location = new System.Drawing.Point(6, 181);
+            this.label4.Location = new System.Drawing.Point(6, 316);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(469, 176);
+            this.label4.Size = new System.Drawing.Size(469, 311);
             this.label4.TabIndex = 2;
             this.label4.Text = "Całkowity czas ";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -232,9 +232,9 @@
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label5.Location = new System.Drawing.Point(484, 181);
+            this.label5.Location = new System.Drawing.Point(484, 316);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(488, 176);
+            this.label5.Size = new System.Drawing.Size(488, 311);
             this.label5.TabIndex = 3;
             this.label5.Text = "label5";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -243,7 +243,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2004, 1101);
+            this.ClientSize = new System.Drawing.Size(2004, 1912);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.MainMenuStrip = this.menuStrip1;

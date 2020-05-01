@@ -12,6 +12,7 @@ namespace RimOptiList
 {
     public partial class OknoG : Form
     {
+        
         public OknoG()
         {
             InitializeComponent();
@@ -27,8 +28,8 @@ namespace RimOptiList
                 CheckFileExists = true,
                 CheckPathExists = true,
 
-                DefaultExt = "xml",
-                Filter = "xml files (*.xml)|*.xml",
+                DefaultExt = "xlsm",
+                Filter = "xlsm files (*.xlsm)|*.xlsm",
                 FilterIndex = 2,
                 RestoreDirectory = true,
 
@@ -38,10 +39,22 @@ namespace RimOptiList
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
+                Excel ex = new Excel(openFileDialog1.FileName, 1);
+                ex.TakeNendN();
+                int Range =ex.RangeData();
+                Excel szablon = new Excel(@"C:\Users\Przemysław\source\repos\RimOptiList\RIMOPTI\Data\Szablon.xml", 1);
+                szablon.SaveAsData(@"C:\Users\Przemysław\source\repos\RimOptiList\RIMOPTI\Data\" + ex.NmHernes+".xml");
+                Excel start = new Excel(@"C:\Users\Przemysław\source\repos\RimOptiList\RIMOPTI\Data\" + ex.NmHernes + ".xml",1);
+                string[,] data =ex.ReadRange(6, 1, Range, 1);
                 
+                
+                ex.Close();
+                start.Close();
+
+                progressBar1.Value += 5;
             }
 
-            progressBar1.Value = progressBar1.Value + 10;
+            
            // Excel ex = new Excel(@"C:\Users\Przemysław\source\repos\RimOptiList\RIMOPTI\Data\Szablon.xml",1);
            // ex.SaveAsData(@"C:\Users\Przemysław\source\repos\RimOptiList\RIMOPTI\Data\kopiaa.xml");
         }

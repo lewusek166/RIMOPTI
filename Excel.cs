@@ -11,6 +11,8 @@ namespace RimOptiList
 {
     class Excel
     {
+        
+        public string Customers, NmHernes;
         string path = "";
         _Application excel = new _Excel.Application();
         Workbook wb;
@@ -24,6 +26,21 @@ namespace RimOptiList
         public Excel()
         {
 
+        }
+        public  int RangeData()
+        {
+            int i = 6;
+            while (ws.Cells[i, 1].Value2 != null)
+            {
+                i++;
+            }
+            return i-1;
+        }
+        public void TakeNendN()
+        {
+            Customers = ws.Cells[2, 4].Value2;
+            NmHernes = ws.Cells[2, 10].Value2;
+          
         }
         public string ReadCell(int i,int j)
         {
@@ -42,7 +59,7 @@ namespace RimOptiList
         {
             Range range = (Range)ws.Range[ws.Cells[starti, starty], ws.Cells[endi, endy]];
             object[,] holder = range.Value2;
-            string[,] returnstring = new string[endi - starti, endy - starty];
+            string [,] returnstring = new string[endi - starti, endy - starty];
             for (int p = 1; p <= endi - starti; p++)
             {
                 for (int q = 1; q <= endy - starty; q++)
