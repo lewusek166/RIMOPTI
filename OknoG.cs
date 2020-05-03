@@ -12,14 +12,14 @@ namespace RimOptiList
 {
     public partial class OknoG : Form
     {
-        
+        public string[,] data;
         public OknoG()
         {
             InitializeComponent();
         }
         private void Button1_Click(object sender, EventArgs e)
         {
-
+            
             OpenFileDialog openFileDialog1 = new OpenFileDialog
             {
                 InitialDirectory = @"C:\",
@@ -45,8 +45,18 @@ namespace RimOptiList
                 Excel szablon = new Excel(@"C:\Users\Przemysław\source\repos\RimOptiList\RIMOPTI\Data\Szablon.xml", 1);
                 szablon.SaveAsData(@"C:\Users\Przemysław\source\repos\RimOptiList\RIMOPTI\Data\" + ex.NmHernes+".xml");
                 Excel lista = new Excel(@"C:\Users\Przemysław\source\repos\RimOptiList\RIMOPTI\Data\" + ex.NmHernes + ".xml",1);
-                string[,] data =ex.ReadRange(6, 1, Range, 16);
-                
+                data =ex.ReadRange(6, 1, Range, 16);
+                ///////////////////////////// sprawdzenie długosci przewodów oraz przekroju 
+                for(int i = 0; i<Range-5; i++)
+                {
+                    if (Int32.Parse(data[i, 2])<60)
+                    {
+                        for(int j = 0; j < 16; j++)
+                        {
+                            data[i, j] = "";/// sprubować jeszcze null
+                        }
+                    }
+                }
                 for (int i = 0; i < Range-5; i++)
                 {
                     if (data[i, 0].Length == 1)
@@ -64,17 +74,18 @@ namespace RimOptiList
                     
                 }//dodanie 0 do lp
                 progressBar1.Value += 30;
-                ///////////////////////////////////////////wklejanie
-                for(int i = 4; i < Range - 1; i++)
-                {
-                    lista.ws.Cells[i, 1].Value2 = ex.NmHernes + "__" + data[i-4, 0];
-                }///kolumna A
+                
+                
+                
+                
+                
                 for (int i = 4; i < Range - 1; i++)
                 {
-                    lista.ws.Cells[i,5].Value2= "Pos. " + data[i-4, 0];
-                    lista.ws.Cells[i, 6].Value2 = ex.NmHernes + "_";
-                    lista.ws.Cells[i, 8].Value2 = data[i, 2];
-                    lista.ws.Cells[]
+                    lista.ws.Cells[i, 1].Value2 = ex.NmHernes + "__" + data[i - 4, 0];//dodane pierwszej kolumny nr wiazki 
+                    lista.ws.Cells[i,5].Value2= "Pos. " + data[i-4, 0];//dodanie pos.
+                    lista.ws.Cells[i, 6].Value2 = ex.NmHernes + "_";//dodanie numeru wiazki wraz z _
+                    lista.ws.Cells[i, 8].Value2 = data[i, 2];//dodanie dlugosci przewodu 
+                    lista.ws.Cells[i, 11].Value2 = data[i, 3];///dodanie rim przewodu 
 
 
                 }///dodani
