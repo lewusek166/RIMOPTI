@@ -17,6 +17,7 @@ namespace RimOptiList
         {
             InitializeComponent();
         }
+        
         private void Button1_Click(object sender, EventArgs e)
         {
             
@@ -49,15 +50,38 @@ namespace RimOptiList
                 ///////////////////////////// sprawdzenie długosci przewodów oraz przekroju 
                 for(int i = 0; i<Range-5; i++)
                 {
-                    if (Int32.Parse(data[i, 2])<60)
+                    if (Int32.Parse(data[i, 2])<60)//długość
+                    { 
+                            data[i, 0] = null; 
+                    }
+                   // if (Double.Parse(data[i, 4]) < 6)// przekrój mam 6!!!!!!!!!!!!
+                   // {
+                   //        data[i, 0] = null;/// sprubować jeszcze null
+                    // }   
+                    
+                }
+                //czyszczenie tablicy z nulli 
+                int zmiejszenieTablicy = 0;
+                
+                for (int i = 0; i < Range - 5; i++)
+                {
+                    if (data[i, 0] == null)
                     {
-                        for(int j = 0; j < 16; j++)
+                        zmiejszenieTablicy++;
+                        
+                        for(int z = i+1;z < Range - 5 - zmiejszenieTablicy;z++)
                         {
-                            data[i, j] = "";/// sprubować jeszcze null
+                            for(int x = 0; x < 16; x++)
+                            {
+                                data[z-1, x] = data[z, x];
+                            }
+                            
+                               
                         }
                     }
                 }
-                for (int i = 0; i < Range-5; i++)
+                Range-= zmiejszenieTablicy;
+                    for (int i = 0; i < Range-5; i++)
                 {
                     if (data[i, 0].Length == 1)
                     {
@@ -79,13 +103,13 @@ namespace RimOptiList
                 
                 
                 
-                for (int i = 4; i < Range - 1; i++)
+                for (int i = 4; i < Range - 5; i++)
                 {
                     lista.ws.Cells[i, 1].Value2 = ex.NmHernes + "__" + data[i - 4, 0];//dodane pierwszej kolumny nr wiazki 
                     lista.ws.Cells[i,5].Value2= "Pos. " + data[i-4, 0];//dodanie pos.
                     lista.ws.Cells[i, 6].Value2 = ex.NmHernes + "_";//dodanie numeru wiazki wraz z _
-                    lista.ws.Cells[i, 8].Value2 = data[i, 2];//dodanie dlugosci przewodu 
-                    lista.ws.Cells[i, 11].Value2 = data[i, 3];///dodanie rim przewodu 
+                    lista.ws.Cells[i, 8].Value2 = data[i-4, 2];//dodanie dlugosci przewodu 
+                    lista.ws.Cells[i, 11].Value2 = data[i-4, 3];///dodanie rim przewodu 
 
 
                 }///dodani
@@ -96,9 +120,6 @@ namespace RimOptiList
                 
             }
 
-            
-           // Excel ex = new Excel(@"C:\Users\Przemysław\source\repos\RimOptiList\RIMOPTI\Data\Szablon.xml",1);
-           // ex.SaveAsData(@"C:\Users\Przemysław\source\repos\RimOptiList\RIMOPTI\Data\kopiaa.xml");
         }
 
         private void TestPołączeniaToolStripMenuItem_Click(object sender, EventArgs e)
