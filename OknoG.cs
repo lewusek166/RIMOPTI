@@ -150,7 +150,7 @@ namespace RimOptiList
                 }
 
                     data = pomoc;
-                    for (int i = 4; i < Range; i++)
+                    for (int i = 4; i < Range+2; i++)
                     {
                         lista.ws.Cells[i, 1].Value2 = ex.NmHernes + "__" + data[i - 4, 0];//dodane pierwszej kolumny nr wiazki 
                         lista.ws.Cells[i, 5].Value2 = "Pos. " + data[i - 4, 0];//dodanie pos.
@@ -162,6 +162,7 @@ namespace RimOptiList
                     lista.SaveData();
                     ex.Close();
                     lista.Close();
+                    
 
             }
         }
