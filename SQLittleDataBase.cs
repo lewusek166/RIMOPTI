@@ -39,25 +39,48 @@ namespace RimOptiList
             sql_cmd.ExecuteNonQuery();
             sql_con.Close();
         }
-        public void LoadData()
+        public void LoadData(string CommandText)
         {
             SetConnection();
             sql_con.Open();
             sql_cmd = sql_con.CreateCommand();
-            string CommandText = "SELECT * FROM Firmy";
             DB = new SQLiteDataAdapter(CommandText, sql_con);
             DS.Reset();
             DB.Fill(DS);
             DT = DS.Tables[0];
-            
-            
-            //Grid.DataSource = DT;
             sql_con.Close();
         }
         public void Add()
         {
             string txtSQLQuery = "insert into  mains (desc) values (6666666)";
             ExecuteQuery(txtSQLQuery);
+        }
+        public bool SprRimPrzewodu(string RimP)
+        {
+             bool czyistnieje=true;
+            string cu = "'" + RimP + "'";
+            RimP = cu;
+            SetConnection();
+            sql_con.Open();
+            sql_cmd = sql_con.CreateCommand();
+            string sqllitleQuery = "SELECT* FROM Przewody WHERE Rim =" + RimP;
+            DB = new SQLiteDataAdapter(sqllitleQuery, sql_con);
+            DS.Reset();
+            DB.Fill(DS);
+            DT = DS.Tables[0];
+            sql_con.Close();
+            try
+            {
+                if(DT.Rows[0].ItemArray[1] != null)
+                {
+                    czyistnieje= true;
+                }
+            }
+            catch
+            {
+                czyistnieje= false;
+            }
+            return czyistnieje;
         }
 
     }

@@ -15,6 +15,7 @@ namespace RimOptiList
     public partial class OknoG : Form
     {
         public string[,] data;
+        public string[,] zasięgiRimP;
         public OknoG()
         {
             InitializeComponent();
@@ -27,7 +28,7 @@ namespace RimOptiList
             OpenFileDialog openFileDialog1 = new OpenFileDialog
             {
                 InitialDirectory = @"C:\",
-                Title = "Browse Text Files",
+                Title = "Wybierz Listę połączeń",
 
                 CheckFileExists = true,
                 CheckPathExists = true,
@@ -43,13 +44,26 @@ namespace RimOptiList
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
+                int licznikRK = 0;
                 Excel ex = new Excel(openFileDialog1.FileName, 1);
                 ex.TakeNendN();
+                //numer wiązki sprawdzenie ,, kolorowanie listy co źle
+                if (ex.NmHernes==null||ex.NmHernes=="")
+                {
+                    MessageBox.Show("Popraw numer wiązki", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ex.ws.Range["J2:J2"].Interior.Color = Color.Red;
+                    ex.Close();
+                    Application.Exit();
+                    Environment.Exit(0);
+                }
+
                 int Range = ex.RangeData();
-                Excel szablon = new Excel(@"C:\Users\Przemysław\source\repos\RimOptiList\RIMOPTI\Data\Szablon.xml", 1);
-                szablon.SaveAsData(@"C:\Users\Przemysław\source\repos\RimOptiList\RIMOPTI\Data\" + ex.NmHernes + ".xml");
-                Excel lista = new Excel(@"C:\Users\Przemysław\source\repos\RimOptiList\RIMOPTI\Data\" + ex.NmHernes + ".xml", 1);
+                //Excel szablon = new Excel(@"C:\Users\Przemysław\source\repos\RimOptiList\RIMOPTI\Data\Szablon.xml", 1);
+                //szablon.SaveAsData(@"C:\Users\Przemysław\source\repos\RimOptiList\RIMOPTI\Data\" + ex.NmHernes + ".xml");
+                //Excel lista = new Excel(@"C:\Users\Przemysław\source\repos\RimOptiList\RIMOPTI\Data\" + ex.NmHernes + ".xml", 1);
                 data = ex.ReadRange(6, 1, Range, 16);
+                ex.Close();
+                
                 Range -= 5;
                 ///////////////////////////// sprawdzenie długosci przewodów oraz przekroju 
                 for (int i = 0; i < Range; i++)
@@ -110,7 +124,7 @@ namespace RimOptiList
                     pomoc[0, z] = data[0, z];
                 }
                 int iteratorA = 0, iteratorB = 0;
-                for (int a = 0; a < Range-iteratorB; a++)
+                for (int a = 0; a < Range; a++)
                 {
                     for (int i = 1; i < Range; i++)
                     {
@@ -141,6 +155,7 @@ namespace RimOptiList
                                     data[s, 3] = "1";//znak rozpoznawczy
                                 }
                             }
+                            licznikRK++;
                             iteratorB++;
                             break;
                         }
@@ -148,9 +163,45 @@ namespace RimOptiList
                     }
 
                 }
-
-                    data = pomoc;
-                    for (int i = 4; i < Range+2; i++)
+                data = pomoc;
+                ///zasięgi rimow przewodów;
+                zasięgiRimP =new string[licznikRK+1, 3];
+                zasięgiRimP[0, 0] = data[0, 3];
+                zasięgiRimP[0, 1] = "0";
+                int licznikZ = 0;
+                for(int i = 1; i <= Range; i++)
+                {
+                    if (data[i, 3] == data[i - 1, 3])
+                    {
+                       
+                    }
+                    else
+                    {
+                        if (licznikZ <= licznikRK)
+                        {
+                            zasięgiRimP[licznikZ, 2] = (i-1).ToString();
+                            if (i == Range)
+                            {
+                              
+                            }
+                            else
+                            {
+                            licznikZ++;
+                            zasięgiRimP[licznikZ, 1] = i .ToString();
+                            zasięgiRimP[licznikZ, 0] = data[i , 3];
+                            
+                            }   
+                        }
+                    }
+                }
+                //połączenie z baza danych sprawdzenie rimów przewodów
+                for(int i = 0; i < licznikRK; i++)
+                {
+                    
+                }
+                //pobranie koloru kom. do czyszczenia rimów kont. niezakówanych 
+                    
+                   /* for (int i = 4; i < Range+4; i++)
                     {
                         lista.ws.Cells[i, 1].Value2 = ex.NmHernes + "__" + data[i - 4, 0];//dodane pierwszej kolumny nr wiazki 
                         lista.ws.Cells[i, 5].Value2 = "Pos. " + data[i - 4, 0];//dodanie pos.
@@ -161,7 +212,7 @@ namespace RimOptiList
                     }///dodani
                     lista.SaveData();
                     ex.Close();
-                    lista.Close();
+                    lista.Close();*/
                     
 
             }
@@ -169,83 +220,20 @@ namespace RimOptiList
 
         private void TestPołączeniaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             SQLittleDataBase sql = new SQLittleDataBase();
-            sql.LoadData();
-
+            if (sql.SprRimPrzewodu("RIM0001") == true)
+            {
+                string dataz = sql.DT.Rows[0].ItemArray[1].ToString();
+                MessageBox.Show(dataz, "rezultat", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            
         }
 
         private void DodajUsuńModyfikujToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             DUM pokaz = new DUM();
             pokaz.Show();
         }
-
-        private void WyszukajToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            string[,] pomoc;
-            string[,] test;
-
-            pomoc = new string[5, 2];
-            test = new string[5, 2];
-            test[0, 0] = "1";
-            test[0, 1] = "22";
-            test[1, 0] = "2";
-            test[1, 1] = "33";
-            test[2, 0] = "3";
-            test[2, 1] = "22";
-            test[3, 0] = "4";
-            test[3, 1] = "55";
-            test[4, 0] = "5";
-            test[4, 1] = "22";
-            pomoc[0, 0] = test[0, 0];
-            pomoc[0, 1] = test[0, 1];
-
-            int iteratorA = 0, iteratorB = 0;
-
-            for (int a = 0; a < 5; a++)
-            {
-
-                for (int i = 1; i < 5; i++)
-                {
-                    if (pomoc[iteratorA, 1] == test[i, 1] && test[i, 1] != "1")
-                    {
-                        iteratorA++;
-
-                        for (int o = 0; o < 2; o++)
-                        {
-                            pomoc[iteratorA, o] = test[i, o];
-                            if (o == 1)
-                            { 
-                            test[i, 1] = "1";//znak rozpoznawczy
-                            }
-                        }
-                    }
-                }
-                    for (int s = 1 + iteratorB; s < 5; s++)
-                    {
-                        if (test[s, 1] != "1")
-                        {
-                            iteratorA++;
-                            for (int o = 0; o < 2; o++)
-                            {
-                                pomoc[iteratorA, o] = test[s, o];
-                            if (o == 1)
-                            {
-                                test[s, 1] = "1";//znak rozpoznawczy
-                            }
-                        }
-                            iteratorB++;
-                            break;
-                        }
-
-                    }
-
-
-
-                
-            }
-        }
+        
     }
 }

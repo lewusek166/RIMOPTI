@@ -6,13 +6,15 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Office.Interop.Excel;
 using _Excel = Microsoft.Office.Interop.Excel;
+using System.Drawing;
+
 
 namespace RimOptiList
 {
     class Excel
     {
         
-        public string Customers, NmHernes;
+        public string NmHernes;
         string path = "";
         _Application excel = new _Excel.Application();
         public Workbook wb;
@@ -25,7 +27,7 @@ namespace RimOptiList
         }
         public Excel()
         {
-
+            
         }
         public  int RangeData()
         {
@@ -36,11 +38,9 @@ namespace RimOptiList
             }
             return i-1;
         }
-        public void TakeNendN()
+        public void TakeNendN()//sprawdzenie num. wiązki i pobranie nazy || jak błąd koloruj na czerwono w liście 
         {
-            Customers = ws.Cells[2, 4].Value2;
             NmHernes = ws.Cells[2, 10].Value2;
-          
         }
         public string ReadCell(int i,int j)
         {
@@ -98,6 +98,7 @@ namespace RimOptiList
         public void Close()
         {
             wb.Close();
+            
         }
     }
 }

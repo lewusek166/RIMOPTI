@@ -96,7 +96,6 @@
             this.wyszukajToolStripMenuItem.Name = "wyszukajToolStripMenuItem";
             this.wyszukajToolStripMenuItem.Size = new System.Drawing.Size(512, 54);
             this.wyszukajToolStripMenuItem.Text = "wyszukaj";
-            this.wyszukajToolStripMenuItem.Click += new System.EventHandler(this.WyszukajToolStripMenuItem_Click);
             // 
             // testPołączeniaToolStripMenuItem
             // 
