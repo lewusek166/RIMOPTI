@@ -15,7 +15,10 @@ namespace RimOptiList
     public partial class OknoG : Form
     {
         public string[,] data;
+        public string[,] DataOrg;
         public string[,] zasięgiRimP;
+        public string[,] spD;
+        public string[,] TabelaGlowna;
         public OknoG()
         {
             InitializeComponent();
@@ -58,11 +61,12 @@ namespace RimOptiList
                 }
 
                 int Range = ex.RangeData();
+                int Range2 = Range;//dosprawdzania rimów
                 //Excel szablon = new Excel(@"C:\Users\Przemysław\source\repos\RimOptiList\RIMOPTI\Data\Szablon.xml", 1);
                 //szablon.SaveAsData(@"C:\Users\Przemysław\source\repos\RimOptiList\RIMOPTI\Data\" + ex.NmHernes + ".xml");
                 //Excel lista = new Excel(@"C:\Users\Przemysław\source\repos\RimOptiList\RIMOPTI\Data\" + ex.NmHernes + ".xml", 1);
                 data = ex.ReadRange(6, 1, Range, 16);
-                ex.Close();
+                DataOrg = ex.ReadRange(6, 1, Range, 16);//do sprawdzania rimow
                 
                 Range -= 5;
                 ///////////////////////////// sprawdzenie długosci przewodów oraz przekroju 
@@ -80,22 +84,35 @@ namespace RimOptiList
                 }
                 //czyszczenie tablicy z nulli 
                 int zmiejszenieTablicy = 0;
-
+                string[] wskaznik;
+                string [,]tabOK;
+                tabOK = new string[Range, 16];
+                wskaznik = new int[Range];
+                
+               
                 for (int i = 0; i < Range; i++)
                 {
-                    if (data[i, 0] == null)
+                    if (data[i, 0] != null)
                     {
+                        wskaznik[i] = i.ToString();
+                    }
+                    else
+                    {   
                         zmiejszenieTablicy++;
-
-                        for (int z = i + 1; z <= Range - zmiejszenieTablicy; z++)
-                        {
-                            for (int x = 0; x < 16; x++)
-                            {
-                                data[z - 1, x] = data[z, x];
-                            }
-                        }
                     }
                 }
+                int c = 0;
+                while (wskaznik[c] != null)
+                {
+                   
+                        for (int x = 0; x < 16; x++)
+                        {
+                        tabOK[c,x]=data[Int16.Parse(wskaznik[c]), x];
+                        }
+                    c++;
+                }
+                
+                
                 //dodanie 0 do lp
                 Range -= (zmiejszenieTablicy);
                 for (int i = 0; i < Range; i++)
@@ -195,10 +212,19 @@ namespace RimOptiList
                     }
                 }
                 //połączenie z baza danych sprawdzenie rimów przewodów
-                for(int i = 0; i < licznikRK; i++)
+                SQLittleDataBase db = new SQLittleDataBase();
+                Object indeks;
+                
+                for(int i = 0; i < Range2-5; i++)
                 {
-                    
+                    if (db.SprRimPrzewodu(DataOrg[i,3]) != true)
+                    {
+                       indeks = "D" + (i + 6).ToString() + ":D" + (i + 6).ToString();
+                       ex.ws.Range[indeks].Interior.Color = Color.Red; 
+                    }
                 }
+                ex.Close();
+               
                 //pobranie koloru kom. do czyszczenia rimów kont. niezakówanych 
                     
                    /* for (int i = 4; i < Range+4; i++)
