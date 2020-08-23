@@ -53,7 +53,7 @@ namespace RimOptiList
                 //numer wiązki sprawdzenie ,, kolorowanie listy co źle
                 if (ex.NmHernes==null||ex.NmHernes=="")
                 {
-                    MessageBox.Show("Popraw numer wiązki", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Popraw numer wiązki Potwierdź zapis błędu do listy połączeń", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     ex.ws.Range["J2:J2"].Interior.Color = Color.Red;
                     ex.Close();
                     Application.Exit();
@@ -62,39 +62,88 @@ namespace RimOptiList
 
                 int Range = ex.RangeData();
                 int Range2 = Range;//dosprawdzania rimów
-                //Excel szablon = new Excel(@"C:\Users\Przemysław\source\repos\RimOptiList\RIMOPTI\Data\Szablon.xml", 1);
-                //szablon.SaveAsData(@"C:\Users\Przemysław\source\repos\RimOptiList\RIMOPTI\Data\" + ex.NmHernes + ".xml");
-                //Excel lista = new Excel(@"C:\Users\Przemysław\source\repos\RimOptiList\RIMOPTI\Data\" + ex.NmHernes + ".xml", 1);
+                Excel szablon = new Excel(@"C:\Users\Przemysław\source\repos\RimOptiList\RIMOPTI\Data\Szablon.xml", 1);
+                szablon.SaveAsData(@"C:\Users\Przemysław\source\repos\RimOptiList\RIMOPTI\Data\" + ex.NmHernes + ".xml");
+                Excel lista = new Excel(@"C:\Users\Przemysław\source\repos\RimOptiList\RIMOPTI\Data\" + ex.NmHernes + ".xml", 1);
                 data = ex.ReadRange(6, 1, Range, 16);
                 DataOrg = ex.ReadRange(6, 1, Range, 16);//do sprawdzania rimow
                 
                 Range -= 5;
-                ///////////////////////////// sprawdzenie długosci przewodów oraz przekroju 
+
+                ///kolor komorki kontaktu 
                 for (int i = 0; i < Range; i++)
-                {
-                    if (Int32.Parse(data[i, 2]) < 60)//długość
+                {   //lewa strona
+                    switch (ex.Get_Colors(i, 9))
                     {
-                        data[i, 0] = null;
+                        case "65535":
+                            DialogResult dialog = MessageBox.Show("Czy zakuwamy kontak " + data[i, 8], "ŻÓŁTY KOLOR", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dialog == DialogResult.Yes)
+                            {
+                                data[i, 10] = "1";
+                            }
+                            else
+                            {
+                                data[i, 10] = "0";
+                            }
+                            break;
+                        case "14277081": data[i, 10] = "1"; break;
+                        case "12566463": data[i, 10] = "1"; break;
+                        case "8421504": data[i, 10] = "1"; break;
+                        case "15921906": data[i, 10] = "1"; break;
+                        case "16777215": data[i, 10] = "0"; break;
                     }
-                    if (Double.Parse(data[i, 4]) >= 6)// przekrój 6 !!
+                    switch (ex.Get_Colors(i, 14))
                     {
-                        data[i, 0] = null;
+                        case "65535":
+                            DialogResult dialog = MessageBox.Show("Czy zakuwamy kontak " + data[i, 8], "ŻÓŁTY KOLOR", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dialog == DialogResult.Yes)
+                            {
+                                data[i, 13] = "1";
+                            }
+                            else
+                            {
+                                data[i, 13] = "0";
+                            }
+                            break;
+                        case "14277081": data[i, 13] = "1"; break;
+                        case "12566463": data[i, 13] = "1"; break;
+                        case "8421504": data[i, 13] = "1"; break;
+                        case "15921906": data[i, 13] = "1"; break;
+                        case "16777215": data[i, 13] = "0"; break;
                     }
 
                 }
+
+
+                    ///////////////////////////// sprawdzenie długosci przewodów oraz przekroju 
+                    for (int i = 0; i < Range; i++)
+                    {
+                        if (Int32.Parse(data[i, 2]) < 60)//długość
+                        {
+                            data[i, 0] = null;
+                        }
+                        if (Double.Parse(data[i, 4]) >= 6)// przekrój 6 !!
+                        {
+                            data[i, 0] = null;
+                        }
+
+                    }
+                
                 //czyszczenie tablicy z nulli 
                 int zmiejszenieTablicy = 0;
                 string[] wskaznik;
                 string [,]tabOK;
                 tabOK = new string[Range, 16];
-                wskaznik = new int[Range];
-                
+                wskaznik = new string[Range];
+                int licznikPomocniczy = 0;
                
                 for (int i = 0; i < Range; i++)
                 {
                     if (data[i, 0] != null)
                     {
-                        wskaznik[i] = i.ToString();
+
+                        wskaznik[licznikPomocniczy] = i.ToString();
+                        licznikPomocniczy++;
                     }
                     else
                     {   
@@ -102,7 +151,7 @@ namespace RimOptiList
                     }
                 }
                 int c = 0;
-                while (wskaznik[c] != null)
+                while (wskaznik[c] != null && c < Range-zmiejszenieTablicy)
                 {
                    
                         for (int x = 0; x < 16; x++)
@@ -110,8 +159,12 @@ namespace RimOptiList
                         tabOK[c,x]=data[Int16.Parse(wskaznik[c]), x];
                         }
                     c++;
+                    if (c == Range - zmiejszenieTablicy)
+                    {
+                        break;
+                    }  
                 }
-                
+                data = tabOK;
                 
                 //dodanie 0 do lp
                 Range -= (zmiejszenieTablicy);
@@ -211,23 +264,47 @@ namespace RimOptiList
                         }
                     }
                 }
-                //połączenie z baza danych sprawdzenie rimów przewodów
+                //połączenie z baza danych sprawdzenie rimów przewodów oraz kontaktów
                 SQLittleDataBase db = new SQLittleDataBase();
                 Object indeks;
-                
+                bool con = true;
                 for(int i = 0; i < Range2-5; i++)
                 {
                     if (db.SprRimPrzewodu(DataOrg[i,3]) != true)
                     {
+                        con = false;
                        indeks = "D" + (i + 6).ToString() + ":D" + (i + 6).ToString();
-                       ex.ws.Range[indeks].Interior.Color = Color.Red; 
+                       ex.ws.Range[indeks].Interior.Color = Color.Red;
+                        MessageBox.Show("Brak numeru rim przewodu w bazie danych  "+ DataOrg[i, 3]+"  Potwierdź zapis błędu do listy połączeń", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                    if (db.SprRimKontaktu(DataOrg[i, 8]) != true)//lewa strona
+                    {
+                        con = false;
+                        indeks = "I" + (i + 6).ToString() + ":I" + (i + 6).ToString();
+                        ex.ws.Range[indeks].Interior.Color = Color.Red;
+                        MessageBox.Show("Brak numeru rim kontaktu w bazie danych  " + DataOrg[i, 3] + "  Potwierdź zapis błędu do listy połączeń", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    if (db.SprRimKontaktu(DataOrg[i, 13]) != true)//prawa strona
+                    {
+                        con = false;
+                        indeks = "N" + (i + 6).ToString() + ":N" + (i + 6).ToString();
+                        ex.ws.Range[indeks].Interior.Color = Color.Red;
+                        MessageBox.Show("Brak numeru rim kontaktu w bazie danych  " + DataOrg[i, 3] + "  Potwierdź zapis błędu do listy połączeń", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
                 }
-                ex.Close();
-               
+                if (con == false)
+                { 
+                    lista.SaveData();
+                    ex.Close();
+                    lista.Close();
+                    openFileDialog1.Dispose();
+                }
                 //pobranie koloru kom. do czyszczenia rimów kont. niezakówanych 
-                    
-                   /* for (int i = 4; i < Range+4; i++)
+                else
+                {
+      
+                    for (int i = 4; i < Range+4; i++)
                     {
                         lista.ws.Cells[i, 1].Value2 = ex.NmHernes + "__" + data[i - 4, 0];//dodane pierwszej kolumny nr wiazki 
                         lista.ws.Cells[i, 5].Value2 = "Pos. " + data[i - 4, 0];//dodanie pos.
@@ -238,9 +315,9 @@ namespace RimOptiList
                     }///dodani
                     lista.SaveData();
                     ex.Close();
-                    lista.Close();*/
-                    
+                    lista.Close();
 
+                }
             }
         }
 
@@ -252,6 +329,7 @@ namespace RimOptiList
                 string dataz = sql.DT.Rows[0].ItemArray[1].ToString();
                 MessageBox.Show(dataz, "rezultat", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            
             
         }
 

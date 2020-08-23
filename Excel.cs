@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.Office.Interop.Excel;
 using _Excel = Microsoft.Office.Interop.Excel;
 using System.Drawing;
-
+using LinqToExcel;
 
 namespace RimOptiList
 {
@@ -99,6 +99,15 @@ namespace RimOptiList
         {
             wb.Close();
             
+        }
+
+        public string Get_Colors(int a,int b )
+        {
+            a += 6;
+
+           string CellColor = ws.Cells[a, b].Interior.Color.ToString(); //Here I go double value which is converted to string.
+            return CellColor;
+
         }
     }
 }

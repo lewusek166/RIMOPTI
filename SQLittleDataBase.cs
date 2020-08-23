@@ -82,6 +82,34 @@ namespace RimOptiList
             }
             return czyistnieje;
         }
+        public bool SprRimKontaktu(string RimK)
+        {
+            bool czyistnieje = true;
+            string cu = "'" + RimK + "'";
+            RimK = cu;
+            SetConnection();
+            sql_con.Open();
+            sql_cmd = sql_con.CreateCommand();
+            string sqllitleQuery = "SELECT* FROM Kontakty WHERE Rim =" + RimK;
+            DB = new SQLiteDataAdapter(sqllitleQuery, sql_con);
+            DS.Reset();
+            DB.Fill(DS);
+            DT = DS.Tables[0];
+            sql_con.Close();
+            try
+            {
+                if (DT.Rows[0].ItemArray[1] != null)
+                {
+                    czyistnieje = true;
+                }
+            }
+            catch
+            {
+                czyistnieje = false;
+            }
+            return czyistnieje;
+        }
+        
 
     }
 }

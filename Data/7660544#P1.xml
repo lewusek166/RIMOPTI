@@ -15,8 +15,8 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>11580</WindowHeight>
-  <WindowWidth>23040</WindowWidth>
+  <WindowHeight>8118</WindowHeight>
+  <WindowWidth>17268</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
@@ -32,7 +32,7 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="m2072536063936">
+  <Style ss:ID="m2622002947520">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -48,7 +48,7 @@
     ss:Bold="1"/>
    <Interior ss:Color="#FF6600" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="m2072536063956">
+  <Style ss:ID="m2622002947540">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -64,7 +64,7 @@
     ss:Bold="1"/>
    <Interior ss:Color="#FF6600" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="m2072536064016">
+  <Style ss:ID="m2622002947600">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -80,7 +80,7 @@
     ss:Bold="1"/>
    <Interior ss:Color="#FF6600" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="m2072536064036">
+  <Style ss:ID="m2622002947620">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -96,7 +96,7 @@
     ss:Bold="1"/>
    <Interior ss:Color="#FF6600" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="m2072536064056">
+  <Style ss:ID="m2622002947640">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -112,7 +112,7 @@
     ss:Bold="1"/>
    <Interior ss:Color="#FF6600" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="m2072536064116">
+  <Style ss:ID="m2622002947700">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -362,24 +362,24 @@
    <Row ss:AutoFitHeight="0" ss:StyleID="s65">
     <Cell ss:Index="39" ss:StyleID="s64"/>
     <Cell ss:StyleID="s64"/>
-    <Cell ss:Index="49" ss:MergeAcross="27" ss:StyleID="m2072536063936"><Data
+    <Cell ss:Index="49" ss:MergeAcross="27" ss:StyleID="m2622002947520"><Data
       ss:Type="String">Printer 1</Data></Cell>
-    <Cell ss:Index="78" ss:MergeAcross="27" ss:StyleID="m2072536063956"><Data
+    <Cell ss:Index="78" ss:MergeAcross="27" ss:StyleID="m2622002947540"><Data
       ss:Type="String">Printer 2</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="18">
     <Cell ss:MergeAcross="8" ss:StyleID="s72"><Data ss:Type="String">Article</Data></Cell>
     <Cell ss:StyleID="s75"/>
     <Cell ss:MergeAcross="5" ss:StyleID="s72"><Data ss:Type="String">Wire</Data></Cell>
-    <Cell ss:Index="18" ss:MergeAcross="8" ss:StyleID="m2072536064016"><Data
+    <Cell ss:Index="18" ss:MergeAcross="8" ss:StyleID="m2622002947600"><Data
       ss:Type="String">Wireend 1</Data></Cell>
-    <Cell ss:Index="28" ss:MergeAcross="9" ss:StyleID="m2072536064036"><Data
+    <Cell ss:Index="28" ss:MergeAcross="9" ss:StyleID="m2622002947620"><Data
       ss:Type="String">Wireend 2</Data></Cell>
-    <Cell ss:Index="39" ss:MergeAcross="8" ss:StyleID="m2072536064056"><Data
+    <Cell ss:Index="39" ss:MergeAcross="8" ss:StyleID="m2622002947640"><Data
       ss:Type="String">Wireend 1b (DGM)</Data></Cell>
     <Cell ss:Index="49" ss:MergeAcross="9" ss:StyleID="s72"><Data ss:Type="String">Setup</Data></Cell>
     <Cell ss:Index="60" ss:MergeAcross="7" ss:StyleID="s72"><Data ss:Type="String">Wire 1</Data></Cell>
-    <Cell ss:Index="69" ss:MergeAcross="7" ss:StyleID="m2072536064116"><Data
+    <Cell ss:Index="69" ss:MergeAcross="7" ss:StyleID="m2622002947700"><Data
       ss:Type="String">Wire 2</Data></Cell>
     <Cell ss:Index="78" ss:MergeAcross="9" ss:StyleID="s72"><Data ss:Type="String">Setup</Data></Cell>
     <Cell ss:Index="89" ss:MergeAcross="7" ss:StyleID="s72"><Data ss:Type="String">Wire 1</Data></Cell>
@@ -487,35 +487,8 @@
     <Cell><Data ss:Type="String">7660544#P1__001</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Pos. 001</Data></Cell>
     <Cell><Data ss:Type="String">7660544#P1_</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="Number">444</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="Number">22</Data></Cell>
-    <Cell ss:Index="39" ss:StyleID="s62"/>
-    <Cell ss:StyleID="s62"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">7660544#P1__004</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">Pos. 004</Data></Cell>
-    <Cell><Data ss:Type="String">7660544#P1_</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="Number">410</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="Number">22</Data></Cell>
-    <Cell ss:Index="39" ss:StyleID="s62"/>
-    <Cell ss:StyleID="s62"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">7660544#P1__008</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">Pos. 008</Data></Cell>
-    <Cell><Data ss:Type="String">7660544#P1_</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="Number">390</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="Number">22</Data></Cell>
-    <Cell ss:Index="39" ss:StyleID="s62"/>
-    <Cell ss:StyleID="s62"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">7660544#P1__002</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">Pos. 002</Data></Cell>
-    <Cell><Data ss:Type="String">7660544#P1_</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="Number">410</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="Number">23</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">RIM46238</Data></Cell>
     <Cell ss:Index="39" ss:StyleID="s62"/>
     <Cell ss:StyleID="s62"/>
    </Row>
@@ -523,8 +496,26 @@
     <Cell><Data ss:Type="String">7660544#P1__003</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Pos. 003</Data></Cell>
     <Cell><Data ss:Type="String">7660544#P1_</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="Number">340</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="Number">17</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="Number">300</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">RIM46238</Data></Cell>
+    <Cell ss:Index="39" ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">7660544#P1__002</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Pos. 002</Data></Cell>
+    <Cell><Data ss:Type="String">7660544#P1_</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="Number">200</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">RIM33645</Data></Cell>
+    <Cell ss:Index="39" ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">7660544#P1__008</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Pos. 008</Data></Cell>
+    <Cell><Data ss:Type="String">7660544#P1_</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="Number">200</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">RIM33645</Data></Cell>
     <Cell ss:Index="39" ss:StyleID="s62"/>
     <Cell ss:StyleID="s62"/>
    </Row>
@@ -533,43 +524,7 @@
     <Cell ss:Index="5"><Data ss:Type="String">Pos. 009</Data></Cell>
     <Cell><Data ss:Type="String">7660544#P1_</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="Number">770</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="Number">17</Data></Cell>
-    <Cell ss:Index="39" ss:StyleID="s62"/>
-    <Cell ss:StyleID="s62"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">7660544#P1__010</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">Pos. 010</Data></Cell>
-    <Cell><Data ss:Type="String">7660544#P1_</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="Number">1990</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="Number">17</Data></Cell>
-    <Cell ss:Index="39" ss:StyleID="s62"/>
-    <Cell ss:StyleID="s62"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">7660544#P1__005</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">Pos. 005</Data></Cell>
-    <Cell><Data ss:Type="String">7660544#P1_</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="Number">3810</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="Number">55</Data></Cell>
-    <Cell ss:Index="39" ss:StyleID="s62"/>
-    <Cell ss:StyleID="s62"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">7660544#P1__006</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">Pos. 006</Data></Cell>
-    <Cell><Data ss:Type="String">7660544#P1_</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="Number">340</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="Number">18</Data></Cell>
-    <Cell ss:Index="39" ss:StyleID="s62"/>
-    <Cell ss:StyleID="s62"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">7660544#P1__007</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">Pos. 007</Data></Cell>
-    <Cell><Data ss:Type="String">7660544#P1_</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="Number">390</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="Number">18</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">RIM33645</Data></Cell>
     <Cell ss:Index="39" ss:StyleID="s62"/>
     <Cell ss:StyleID="s62"/>
    </Row>
@@ -577,8 +532,53 @@
     <Cell><Data ss:Type="String">7660544#P1__011</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Pos. 011</Data></Cell>
     <Cell><Data ss:Type="String">7660544#P1_</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="Number">1990</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="Number">44</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="Number">300</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">RIM33645</Data></Cell>
+    <Cell ss:Index="39" ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">7660544#P1__004</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Pos. 004</Data></Cell>
+    <Cell><Data ss:Type="String">7660544#P1_</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="Number">500</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">RIM46021</Data></Cell>
+    <Cell ss:Index="39" ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">7660544#P1__006</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Pos. 006</Data></Cell>
+    <Cell><Data ss:Type="String">7660544#P1_</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="Number">300</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">RIM46021</Data></Cell>
+    <Cell ss:Index="39" ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">7660544#P1__005</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Pos. 005</Data></Cell>
+    <Cell><Data ss:Type="String">7660544#P1_</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="Number">200</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">RIM21605</Data></Cell>
+    <Cell ss:Index="39" ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">7660544#P1__010</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Pos. 010</Data></Cell>
+    <Cell><Data ss:Type="String">7660544#P1_</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">RIM21605</Data></Cell>
+    <Cell ss:Index="39" ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">7660544#P1__007</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Pos. 007</Data></Cell>
+    <Cell><Data ss:Type="String">7660544#P1_</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="Number">200</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">RIM57314</Data></Cell>
     <Cell ss:Index="39" ss:StyleID="s62"/>
     <Cell ss:StyleID="s62"/>
    </Row>
