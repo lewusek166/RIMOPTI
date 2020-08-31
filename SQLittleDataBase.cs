@@ -109,7 +109,21 @@ namespace RimOptiList
             }
             return czyistnieje;
         }
-        
+        public void PobranieDanychPrzewodu(string RimP,string ZapisOdizo,string ZapisKodKol, string ZapisKolorNad )
+        {
+            string P = "'" + RimP + "'";
+            RimP = P;
+            SetConnection();
+            sql_con.Open();
+            sql_cmd = sql_con.CreateCommand();
+            string sqllitleQuery = "SELECT* FROM Przewody WHERE Rim =" + RimP;
+            DB = new SQLiteDataAdapter(sqllitleQuery, sql_con);
+            DS.Reset();
+            DB.Fill(DS);
+            DT = DS.Tables[0];
+            sql_con.Close();
+            ///dokończyć
+        }
 
     }
 }

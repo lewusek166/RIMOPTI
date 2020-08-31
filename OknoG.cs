@@ -69,8 +69,96 @@ namespace RimOptiList
                 DataOrg = ex.ReadRange(6, 1, Range, 16);//do sprawdzania rimow
                 
                 Range -= 5;
+                ///supuność danych: 
+                ///czy nie ma pustych komórek
+                /// czy lp się nie powtarza 
+                Object indeks;
+                bool con = true;
+                for (int z = 0; z < Range; z++)
+                {
+                    if(data[z,1]!=""&& data[z, 1] != null)//Nadruk 
+                    {
+                        indeks = "B" + (z + 6).ToString() + ":B" + (z + 6).ToString();
+                        ex.ws.Range[indeks].Interior.Color = Color.Red;
+                        con = false;
+                    }
 
-                ///kolor komorki kontaktu 
+                    if (data[z, 2] != "" && data[z, 2] != null)//długośc przewodu 
+                    {
+                        indeks = "C" + (z + 6).ToString() + ":C" + (z + 6).ToString();
+                        ex.ws.Range[indeks].Interior.Color = Color.Red;
+                        con = false;
+                    }
+
+                    if (data[z, 3] != "" && data[z, 3] != null)//indeks materialu
+                    {
+                        indeks = "D" + (z + 6).ToString() + ":D" + (z + 6).ToString();
+                        ex.ws.Range[indeks].Interior.Color = Color.Red;
+                        con = false;
+                    }
+
+                    if (data[z, 4] != "" && data[z, 4] != null)//Przekrój
+                    {
+                        indeks = "E" + (z + 6).ToString() + ":E" + (z + 6).ToString();
+                        ex.ws.Range[indeks].Interior.Color = Color.Red;
+                        con = false;
+                    }
+
+                    if (data[z, 5] != "" && data[z, 5] != null)//kolor 
+                    {
+                        indeks = "F" + (z + 6).ToString() + ":F" + (z + 6).ToString();
+                        ex.ws.Range[indeks].Interior.Color = Color.Red;
+                        con = false;
+                    }
+
+                    if (data[z, 8] != "" && data[z, 8] != null)//kontakP 
+                    {
+                        indeks = "I" + (z + 6).ToString() + ":I" + (z + 6).ToString();
+                        ex.ws.Range[indeks].Interior.Color = Color.Red;
+                        con = false;
+                    }
+
+                    if (data[z, 13] != "" && data[z, 13] != null)//kontakP 
+                    {
+                        indeks = "N" + (z + 6).ToString() + ":N" + (z + 6).ToString();
+                        ex.ws.Range[indeks].Interior.Color = Color.Red;
+                        con = false;
+                    }
+                }
+                if (con == false)
+                {
+                    DialogResult dialog = MessageBox.Show("Zaakceptuj zapis błędów na liście połączeń", "BŁĘDY NA LIŚCIE POŁĄCZEŃ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                   
+                    lista.SaveData();
+                    ex.Close();
+                    lista.Close();
+                    openFileDialog1.Dispose();
+                }
+                for (int q = 0; q < Range; q++)
+                {
+                    for(int w = q+1; w < Range; w++)
+                    {
+                        if (data[q, 0] == data[w, 0] || data[q, 0] == "" || data[q, 0] == null)
+                        {
+                            indeks = "A" + (q + 6).ToString() + ":A" + (q + 6).ToString();
+                            ex.ws.Range[indeks].Interior.Color = Color.Red;
+                            con = false;
+                            indeks = "A" + (w + 6).ToString() + ":A" + (w + 6).ToString();
+                            ex.ws.Range[indeks].Interior.Color = Color.Red;
+
+                        }
+                    }
+                }
+                if (con == false)
+                {
+                    DialogResult dialog = MessageBox.Show("Powtarzający się nr lp. Zaakceptuj zapis błędów na listę połączeń", "BŁĘDY NA LIŚCIE POŁĄCZEŃ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    lista.SaveData();
+                    ex.Close();
+                    lista.Close();
+                    openFileDialog1.Dispose();
+                }
+                ///Pobranie koloru komorki kontaktu 
                 for (int i = 0; i < Range; i++)
                 {   //lewa strona
                     switch (ex.Get_Colors(i, 9))
@@ -114,9 +202,8 @@ namespace RimOptiList
 
                 }
 
-
-                    ///////////////////////////// sprawdzenie długosci przewodów oraz przekroju 
-                    for (int i = 0; i < Range; i++)
+                //// sprawdzenie długosci przewodów oraz przekroju 
+                for (int i = 0; i < Range; i++)
                     {
                         if (Int32.Parse(data[i, 2]) < 60)//długość
                         {
@@ -264,10 +351,15 @@ namespace RimOptiList
                         }
                     }
                 }
+                ///usuniecie mm 
+                char[] trim = { 'm', 'm' };
+                for (int f = 0; f < Range; f++)
+                {
+                    data[f, 2].Trim(trim);
+                }
+
                 //połączenie z baza danych sprawdzenie rimów przewodów oraz kontaktów
                 SQLittleDataBase db = new SQLittleDataBase();
-                Object indeks;
-                bool con = true;
                 for(int i = 0; i < Range2-5; i++)
                 {
                     if (db.SprRimPrzewodu(DataOrg[i,3]) != true)
@@ -300,10 +392,9 @@ namespace RimOptiList
                     lista.Close();
                     openFileDialog1.Dispose();
                 }
-                //pobranie koloru kom. do czyszczenia rimów kont. niezakówanych 
+                
                 else
                 {
-      
                     for (int i = 4; i < Range+4; i++)
                     {
                         lista.ws.Cells[i, 1].Value2 = ex.NmHernes + "__" + data[i - 4, 0];//dodane pierwszej kolumny nr wiazki 
