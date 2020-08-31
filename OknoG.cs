@@ -76,49 +76,49 @@ namespace RimOptiList
                 bool con = true;
                 for (int z = 0; z < Range; z++)
                 {
-                    if(data[z,1]!=""&& data[z, 1] != null)//Nadruk 
+                    if(data[z,1]=="---"&& data[z, 1] == "")//Nadruk 
                     {
                         indeks = "B" + (z + 6).ToString() + ":B" + (z + 6).ToString();
                         ex.ws.Range[indeks].Interior.Color = Color.Red;
                         con = false;
                     }
 
-                    if (data[z, 2] != "" && data[z, 2] != null)//długośc przewodu 
+                    if (data[z, 2] == "---" && data[z, 2] == null)//długośc przewodu 
                     {
                         indeks = "C" + (z + 6).ToString() + ":C" + (z + 6).ToString();
                         ex.ws.Range[indeks].Interior.Color = Color.Red;
                         con = false;
                     }
 
-                    if (data[z, 3] != "" && data[z, 3] != null)//indeks materialu
+                    if (data[z, 3] == "---" && data[z, 3] == null)//indeks materialu
                     {
                         indeks = "D" + (z + 6).ToString() + ":D" + (z + 6).ToString();
                         ex.ws.Range[indeks].Interior.Color = Color.Red;
                         con = false;
                     }
 
-                    if (data[z, 4] != "" && data[z, 4] != null)//Przekrój
+                    if (data[z, 4] == "---" && data[z, 4] == null)//Przekrój
                     {
                         indeks = "E" + (z + 6).ToString() + ":E" + (z + 6).ToString();
                         ex.ws.Range[indeks].Interior.Color = Color.Red;
                         con = false;
                     }
 
-                    if (data[z, 5] != "" && data[z, 5] != null)//kolor 
+                    if (data[z, 5] == "---" && data[z, 5] == null)//kolor 
                     {
                         indeks = "F" + (z + 6).ToString() + ":F" + (z + 6).ToString();
                         ex.ws.Range[indeks].Interior.Color = Color.Red;
                         con = false;
                     }
 
-                    if (data[z, 8] != "" && data[z, 8] != null)//kontakP 
+                    if (data[z, 8] == "---" && data[z, 8] == null)//kontakP 
                     {
                         indeks = "I" + (z + 6).ToString() + ":I" + (z + 6).ToString();
                         ex.ws.Range[indeks].Interior.Color = Color.Red;
                         con = false;
                     }
 
-                    if (data[z, 13] != "" && data[z, 13] != null)//kontakP 
+                    if (data[z, 13] == "---" && data[z, 13] == null)//kontakP 
                     {
                         indeks = "N" + (z + 6).ToString() + ":N" + (z + 6).ToString();
                         ex.ws.Range[indeks].Interior.Color = Color.Red;
